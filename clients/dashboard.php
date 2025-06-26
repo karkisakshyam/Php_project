@@ -49,17 +49,30 @@ $orders_res = $conn->query("SELECT food_item, order_time FROM orders WHERE user_
     <section class="menu">
         <div class="food-item"><img src="../img/Salami-pizza-hero.jpg" alt="Pizza" />
             <p>Pizza</p>
+            <p>PRICE: Rs.550</p>
         </div>
         <div class="food-item"><img src="../img/images.jpeg" alt="Burger" />
             <p>Burger</p>
+            <p>PRICE: Rs.350</p>
         </div>
         <div class="food-item"><img src="../img/pasta.jpeg" alt="Pasta" />
             <p>Pasta</p>
+            <p>PRICE: Rs.500</p>
         </div>
         <div class="food-item"><img src="../img/momo.jpeg" alt="Momo" />
             <p>Momo</p>
+            <p>PRICE: Rs.180</p>
         </div>
     </section>
+
+     <h2>Blue Dinner Special</h2>
+     <section class="menu">
+      <div class="food-item"><img src="../img/Salami-pizza-hero.jpg" alt="Pizza" />
+            <p>Pizza</p>
+            <p>PRICE: Rs.550</p>
+        </div>
+     </section>
+
 
     <section id="select-food">
         <form method="POST">

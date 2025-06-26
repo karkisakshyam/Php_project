@@ -24,8 +24,9 @@ nav {
 }
 
 .nav-logo img {
-  height: 40px;
-  width: auto;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
 }
 
 .nav-links {
