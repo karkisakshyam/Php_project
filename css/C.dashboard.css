@@ -1,0 +1,176 @@
+/* General Reset & Typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f6ff;
+  color: #333;
+  padding: 20px;
+}
+
+/* Navbar ko styling */
+nav {
+  background-color: #0073e6;
+  padding: 12px 30px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #cce6ff;
+}
+
+/* Headings */
+h2, h3 {
+  color: #004a99;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Menu Section */
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+.food-item {
+  background: #fff;
+  border: 1px solid #d0e6ff;
+  border-radius: 10px;
+  padding: 15px;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 115, 230, 0.05);
+  transition: transform 0.3s;
+}
+.food-item:hover {
+  transform: scale(1.05);
+}
+.food-item img {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.food-item p {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #004a99;
+}
+
+/* Food Selection Form */
+#select-food {
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #cce0ff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 115, 230, 0.05);
+}
+#select-food form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#select-food select {
+  padding: 12px;
+  border: 1px solid #99c2ff;
+  border-radius: 6px;
+  font-size: 16px;
+}
+#select-food button {
+  padding: 12px;
+  background-color: #0073e6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#select-food button:hover {
+  background-color: #005bb5;
+}
+
+/* Orders Section */
+#orders {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 115, 230, 0.05);
+}
+#orders ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#orders li {
+  padding: 12px 15px;
+  background-color: #e6f3ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #004080;
+}
+.eta {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #0073e6;
+  font-weight: 500;
+}
+
+/* Error message */
+p[style*="color:red"] {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: background-color 0.3s ease;
+}
+.delete-btn:hover {
+  background-color: #c82333;
+}

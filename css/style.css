@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f0f6ff;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+
+/* ===== Headings ===== */
+h1, h2, h3 {
+    color: #005bb5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===== Form Styles ===== */
+form {
+    background: #ffffff;
+    padding: 30px 25px;
+    margin: 40px auto;
+    border-radius: 10px;
+    max-width: 420px;
+    box-shadow: 0 4px 10px rgba(0, 115, 230, 0.1);
+}
+form h2 {
+    margin-bottom: 20px;
+}
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    font-size: 15px;
+    border: 1px solid #ccdfff;
+    transition: border 0.3s;
+}
+input:focus, select:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+button {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #005bb5;
+}
+
+/* ===== Error/Status Messages ===== */
+.error {
+    color: #e60000;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+.success {
+    color: #006600;
+    margin-bottom: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ===== Dashboard ===== */
+.dashboard {
+    max-width: 1000px;
+    margin: auto;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.card {
+    background: white;
+    border: 1px solid #cce0ff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 115, 230, 0.05);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ===== Table Styles (Admin Orders) ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #e0efff;
+}
+table th {
+    background-color: #e6f3ff;
+    color: #003366;
+}
+table tr:hover {
+    background-color: #f2f8ff;
+}
+
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .menu, .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    table, th, td {
+        font-size: 14px;
+    }
+    .food-item, .card {
+        width: 90%;
+    }
+}
+
+
+
+/* Your orders wala table */
+
+.orders-section {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 115, 230, 0.1);
+    padding: 25px 30px;
+}
+
+.orders-section h3 {
+    color: #004a99;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Table Styling */
+.orders-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.orders-table thead th {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+}
+
+.orders-table tbody tr {
+    background-color: #f0f6ff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 115, 230, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.orders-table tbody tr:hover {
+    background-color: #d7e7ff;
+}
+
+.orders-table tbody td {
+    padding: 14px 15px;
+    text-align: center;
+    font-weight: 500;
+    color: #004080;
+}
+
+/* Rounded corners on first and last td of rows */
+.orders-table tbody tr td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.orders-table tbody tr td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Status badges */
+.status {
+    display: inline-block;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status.pending {
+    background-color: #ff9900; /* Orange */
+}
+
+.status.delivered {
+    background-color: #28a745; /* Green */
+}
+
+.status.cancelled {
+    background-color: #dc3545; /* Red */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .orders-table thead {
+        display: none;
+    }
+    .orders-table, .orders-table tbody, .orders-table tr, .orders-table td {
+        display: block;
+        width: 100%;
+    }
+    .orders-table tr {
+        margin-bottom: 20px;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    .orders-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+        background-color: #f0f6ff;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    .orders-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: 700;
+        text-align: left;
+        color: #0073e6;
+    }
+}
