@@ -175,3 +175,25 @@ p[style*="color:red"] {
 .delete-btn:hover {
   background-color: #c82333;
 }
+
+
+
+/* Admin dashboard order table */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.order-table th,
+.order-table td {
+  padding: 12px;
+  border: 1px solid #cce0ff;
+  text-align: center;
+}
+
+.order-table th {
+  background-color: #e6f3ff;
+  color: #004a99;
+}
