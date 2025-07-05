@@ -2,35 +2,34 @@
 session_start();
 include '../db.php';
 
-$success = '';
 $error = '';
+$success = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $location = trim($_POST['location']);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = 'user';
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $location = $_POST['location'];
 
-    // Check if user already exists
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $res = $stmt->get_result();
+    // Check if email exists
+    $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $res = $check->get_result();
 
     if ($res->num_rows > 0) {
-        $error = "User already registered. Please login.";
+        $error = "Already registered. Redirecting to login...";
+        header("refresh:2;url=login.php");
     } else {
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-
         $stmt = $conn->prepare("INSERT INTO users (role, email, password, location) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $role, $email, $hashedPassword, $location);
+        $stmt->bind_param("ssss", $role, $email, $password, $location);
 
         if ($stmt->execute()) {
             $_SESSION['client'] = $email;
             header("Location: dashboard.php");
-            exit;
+            exit();
         } else {
-            $error = "Registration failed. Please try again.";
+            $error = "Something went wrong. Try again.";
         }
     }
 }
@@ -43,20 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
-<div class="form-container">
-    <h2>Client Registration</h2>
-
-    <?php if ($error): ?>
-        <p class="error"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-
-    <form method="POST">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="text" name="location" placeholder="Location" required />
-        <button type="submit">Register</button>
-        <p>Already have an account? <a href="login.php">Login here</a></p>
-    </form>
-</div>
+<form method="POST" class="form-container">
+    <h2>Client Register</h2>
+    <?php if ($error): ?><p class="error"><?= $error ?></p><?php endif; ?>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="location" placeholder="Location" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Register</button>
+    <p>Already have an account? <a href="login.php">Login here</a></p>
+</form>
 </body>
 </html>

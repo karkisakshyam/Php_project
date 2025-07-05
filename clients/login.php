@@ -2,21 +2,28 @@
 session_start();
 include '../db.php';
 
+$error = '';
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-    $stmt->bind_param("ss", $email, $password);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $res = $stmt->get_result();
 
-    if ($res->num_rows > 0) {
-        $_SESSION['client'] = $email;
-        header("Location: dashboard.php");
-        exit;
+    if ($res->num_rows === 1) {
+        $user = $res->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['client'] = $user['email'];
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            $error = "Incorrect password.";
+        }
     } else {
-        $error = "Invalid user login.";
+        $error = "User not found.";
     }
 }
 ?>
@@ -25,14 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Client Login</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/C.dashboard.css">
 </head>
 <body>
-<form method="POST">
+<form method="POST" class="form-container">
     <h2>Client Login</h2>
-    <?php if (!empty($error)): ?>
-        <p class="error"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
+    <?php if ($error): ?><p class="error"><?= $error ?></p><?php endif; ?>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
     <button type="submit">Login</button>
